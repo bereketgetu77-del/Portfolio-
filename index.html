@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header class="header">
+  <nav class="nav">
+    <h2 class="logo">MyPortfolio</h2>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <img src="my.webp" alt="My Image" class="hero-img"/>
+    <h1>Hi, I'm <span class="name">Your Name</span></h1>
+    <h3><span id="typing"></span></h3>
+    <a href="#projects" class="btn">View My Work</a>
+  </section>
+</header>
+
+<section class="about reveal" id="about">
+  <h2>About Me</h2>
+  <p>
+    I am a 16-year-old frontend developer passionate about building modern,
+    responsive, and animated websites using HTML, CSS, and JavaScript.
+  </p>
+</section>
+
+<section class="projects reveal" id="projects">
+  <h2>Projects</h2>
+  <div class="project-grid">
+    <div class="card">
+      <h3>First Website</h3>
+      <p>My first responsive website built using HTML & CSS.</p>
+      <a href="https://bereketgetu77-del.github.io/To-do-list-website/">Go</a>
+    </div>
+
+    <div class="card">
+      <h3>Portfolio</h3>
+      <p>Animated personal portfolio website.</p>
+      <a href="https://bereketgetu77-del.github.io/About-me/">Live Demo</a>
+    </div>
+
+    <div class="card">
+      <h3>Coming Soon</h3>
+      <p>More advanced projects coming soon.</p>
+      <a href="https://bereketgetu77-del.github.io/Future-Projects/">Preview</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact reveal" id="contact">
+  <h2>Contact</h2>
+  <p>Email: bereketgetu77@gmail.com</p>
+  <p>Telegram / WhatsApp: +251978859589</p>
+</section>
+
+<footer>
+  <p>© 2025 Bereket Getu | All Rights Reserved</p>
+</footer>
+
+<!-- JS -->
+<script>
+/* Typing Effect */
+const texts = ["Frontend Developer", "Student", "Web Designer"];
+let count = 0, index = 0;
+
+function typeEffect() {
+  let current = texts[count];
+  document.getElementById("typing").textContent = current.slice(0, index++);
+  if(index > current.length){
+    setTimeout(() => {
+      index = 0;
+      count = (count + 1) % texts.length;
+    }, 1200);
+  }
+  setTimeout(typeEffect, 120);
+}
+typeEffect();
+
+/* Scroll Reveal */
+const reveals = document.querySelectorAll(".reveal");
+window.addEventListener("scroll", () => {
+  reveals.forEach(r => {
+    const top = r.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      r.classList.add("active");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
